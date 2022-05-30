@@ -1,0 +1,13 @@
+data_path: 'dataset/downstream/'
+benchmark_filename: [train, valid, test]
+alias_of_item_id: [item_id_list]
+load_col:
+  inter: [user_id, item_id_list, item_id]
+neg_sampling: ~
+transform: ~
+
+topk: [10, 50]
+metrics: [HIT, NDCG]
+valid_metric: NDCG@10
+eval_batch_size: 2048
+stopping_step: 10

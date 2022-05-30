@@ -1,0 +1,12 @@
+data_path: 'dataset/pretrain/'
+benchmark_filename: [train]
+alias_of_item_id: [item_id_list]
+load_col:
+  inter: [user_id, item_id_list, item_id]
+neg_sampling: ~
+transform: plm_emb
+
+train_stage: pretrain
+pretrain_epochs: 300
+save_step: 50
+train_batch_size: 8192
