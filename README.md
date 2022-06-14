@@ -1,6 +1,6 @@
 # UniSRec
 
-This is the official PyTorch implementation for the paper:
+This is the official PyTorch implementation for the [paper](https://arxiv.org/abs/2206.05941):
 > Yupeng Hou*, Shanlei Mu*, Wayne Xin Zhao, Yaliang Li, Bolin Ding, Ji-Rong Wen. Towards Universal Sequence Representation Learning for Recommender Systems. KDD 2022.
 
 ## Overview
