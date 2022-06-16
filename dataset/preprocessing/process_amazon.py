@@ -237,7 +237,7 @@ def generate_training_data(args, rating_inters):
     return train_inters, valid_inters, test_inters, user2index, item2index
 
 
-def generate_item_embedding(args, item_text_list, item2index, tokenizer, model):
+def generate_item_embedding(args, item_text_list, item2index, tokenizer, model, word_drop_ratio=-1):
     print(f'Generate Text Embedding by {args.emb_type}: ')
     print(' Dataset: ', args.dataset)
 
@@ -252,15 +252,15 @@ def generate_item_embedding(args, item_text_list, item2index, tokenizer, model):
     start, batch_size = 0, 4
     while start < len(order_texts):
         sentences = order_texts[start: start + batch_size]
-        if args.word_drop_ratio > 0:
-            print(f'Word drop with p={args.word_drop_ratio}')
+        if word_drop_ratio > 0:
+            print(f'Word drop with p={word_drop_ratio}')
             new_sentences = []
             for sent in sentences:
                 new_sent = []
                 sent = sent.split(' ')
                 for wd in sent:
                     rd = random.random()
-                    if rd > args.word_drop_ratio:
+                    if rd > word_drop_ratio:
                         new_sent.append(wd)
                 new_sent = ' '.join(new_sent)
                 new_sentences.append(new_sent)
@@ -279,7 +279,7 @@ def generate_item_embedding(args, item_text_list, item2index, tokenizer, model):
 
     # suffix=1, output DATASET.feat1CLS, with word drop ratio 0;
     # suffix=2, output DATASET.feat2CLS, with word drop ratio > 0;
-    if args.word_drop_ratio > 0:
+    if word_drop_ratio > 0:
         suffix = '2'
     else:
         suffix = '1'
@@ -358,7 +358,11 @@ if __name__ == '__main__':
 
     # generate PLM emb and save to file
     generate_item_embedding(args, item_text_list, item2index, 
-                            plm_tokenizer, plm_model)
+                            plm_tokenizer, plm_model, word_drop_ratio=-1)
+    # pre-stored word drop PLM embs
+    if args.word_drop_ratio > 0:
+        generate_item_embedding(args, item_text_list, item2index, 
+                                plm_tokenizer, plm_model, word_drop_ratio=args.word_drop_ratio)
 
     # save interaction sequences into atomic files
     convert_to_atomic_files(args, train_inters, valid_inters, test_inters)

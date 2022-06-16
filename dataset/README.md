@@ -42,3 +42,23 @@ dataset/
 cd dataset/preprocessing/
 python process_amazon.py --dataset Pantry
 ```
+
+### 3. Process pretrain datasets
+
+```bash
+# cd dataset/preprocessing/
+
+for ds in Food Home CDs Kindle Movies
+do
+  python process_amazon.py --dataset ${ds} --output_path ../pretrain/ --word_drop_ratio 0.15
+done
+
+python to_pretrain_atomic_files.py
+
+path=`pwd`
+for ds in Food Home CDs Kindle Movies
+do
+  ln -s ${path}/../downstream/${ds}/${ds}.feat1CLS ../pretrain/FHCKM/
+  ln -s ${path}/../downstream/${ds}/${ds}.feat2CLS ../pretrain/FHCKM/
+done
+```
