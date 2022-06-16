@@ -193,6 +193,28 @@ def generate_text(args, items, features):
     return item_text_list
 
 
+def load_text(file):
+    item_text_list = []
+    with open(file, 'r') as fp:
+        fp.readline()
+        for line in fp:
+            try:
+                item, text = line.strip().split('\t', 1)
+            except ValueError:
+                item = line.strip()
+                text = '.'
+            item_text_list.append([item, text])
+    return item_text_list
+
+
+def write_text_file(item_text_list, file):
+    print('Writing text file: ')
+    with open(file, 'w') as fp:
+        fp.write('item_id:token\ttext:token_seq\n')
+        for item, text in item_text_list:
+            fp.write(item + '\t' + text + '\n')
+
+
 def preprocess_text(args, rating_inters):
     print('Process text data: ')
     print(' Dataset: ', args.dataset)
@@ -235,6 +257,21 @@ def generate_training_data(args, rating_inters):
         assert len(user2items[u_index]) == len(train_inters[u_index]) + \
                len(valid_inters[u_index]) + len(test_inters[u_index])
     return train_inters, valid_inters, test_inters, user2index, item2index
+
+
+def load_unit2index(file):
+    unit2index = dict()
+    with open(file, 'r') as fp:
+        for line in fp:
+            unit, index = line.strip().split('\t')
+            unit2index[unit] = int(index)
+    return unit2index
+
+
+def write_remap_index(unit2index, file):
+    with open(file, 'w') as fp:
+        for unit in unit2index:
+            fp.write(unit + '\t' + str(unit2index[unit]) + '\n')
 
 
 def generate_item_embedding(args, item_text_list, item2index, tokenizer, model, word_drop_ratio=-1):
@@ -366,3 +403,8 @@ if __name__ == '__main__':
 
     # save interaction sequences into atomic files
     convert_to_atomic_files(args, train_inters, valid_inters, test_inters)
+
+    # save useful data
+    write_text_file(item_text_list, os.path.join(args.output_path, args.dataset, f'{args.dataset}.text'))
+    write_remap_index(user2index, os.path.join(args.output_path, args.dataset, f'{args.dataset}.user2index'))
+    write_remap_index(item2index, os.path.join(args.output_path, args.dataset, f'{args.dataset}.item2index'))
