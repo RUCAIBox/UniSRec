@@ -62,3 +62,25 @@ do
   ln -s ${path}/../downstream/${ds}/${ds}.feat2CLS ../pretrain/FHCKM/
 done
 ```
+
+## Online Retail
+
+### 1. Download raw datasets
+
+Please download the raw datasets from Kaggle [[link]](https://www.kaggle.com/datasets/carrie1/ecommerce-data) and save `archive.zip` into `dataset/raw/`.
+
+Unzip and convert it to UTF-8.
+
+```bash
+mv archive.zip dataset/raw/
+cd dataset/raw/
+unzip archive.zip
+iconv -f latin1 -t utf-8 data.csv > data-utf8.csv
+```
+
+### 2. Process downstream dataset
+
+```bash
+cd dataset/preprocessing/
+python process_or.py
+```
