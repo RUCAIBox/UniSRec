@@ -68,6 +68,10 @@ Pre-train with distributed data parallel on GPU:0-3.
 CUDA_VISIBLE_DEVICES=0,1,2,3 python ddp_pretrain.py
 ```
 
+### Customized Datasets
+
+Please refer to [[link]](dataset/README.md) for details of data preprocessing. Then you can correspondingly try your customized datasets.
+
 ### Acknowledgement
 
 The implementation is based on the open-source recommendation library [RecBole](https://github.com/RUCAIBox/RecBole).
