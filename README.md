@@ -3,6 +3,15 @@
 This is the official PyTorch implementation for the [paper](https://arxiv.org/abs/2206.05941):
 > Yupeng Hou*, Shanlei Mu*, Wayne Xin Zhao, Yaliang Li, Bolin Ding, Ji-Rong Wen. Towards Universal Sequence Representation Learning for Recommender Systems. KDD 2022.
 
+---
+
+*Updates*:
+
+* [June 28, 2022] We updated some useful "mid product" files that can be obtained during the data preprocessing stage [[link]](dataset/#useful-files), including:
+  1. Clean item text (`*.text`);
+  2. Index mapping between raw IDs and remapped IDs (`*.user2index`, `*.item2index`);
+* [June 16, 2022] We released the code and scripts for  preprocessing ours datasets [[link]](dataset/#dataset-preprocessing).
+
 ## Overview
 
 We propose **UniSRec**, which stands for **Uni**versal **S**equence representation learning for **Rec**ommendation. Aiming to learn more generalizable sequence representations, UniSRec utilizes the associated description text of an item to learn transferable representations across different domains and platforms. For learning *universal item representations*, we design a lightweight architecture based on parametric whitening and mixture-of-experts enhanced adaptor. For learning *universal sequence representations*, we introduce two kinds of contrastive learning tasks by sampling multi-domain negatives. With the pre-trained universal sequence representation model, our approach can be effectively transferred to new cross-domain and cross-platform recommendation scenarios in a parameter-efficient way, under either inductive or transductive settings.

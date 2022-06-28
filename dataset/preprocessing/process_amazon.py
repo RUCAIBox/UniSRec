@@ -309,7 +309,11 @@ def generate_item_embedding(args, item_text_list, item2index, tokenizer, model, 
             cls_output = outputs.last_hidden_state[:, 0, ].detach().cpu()
             embeddings.append(cls_output)
         elif args.emb_type == 'Mean':
-            raise NotImplementedError()
+            masked_output = outputs.last_hidden_state * encoded_sentences['attention_mask'].unsqueeze(-1)
+            mean_output = masked_output[:,1:,:].sum(dim=1) / \
+                encoded_sentences['attention_mask'][:,1:].sum(dim=-1, keepdim=True)
+            mean_output = mean_output.detach().cpu()
+            embeddings.append(mean_output)
         start += batch_size
     embeddings = torch.cat(embeddings, dim=0).numpy()
     print('Embeddings shape: ', embeddings.shape)

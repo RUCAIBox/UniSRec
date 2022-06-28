@@ -84,3 +84,13 @@ iconv -f latin1 -t utf-8 data.csv > data-utf8.csv
 cd dataset/preprocessing/
 python process_or.py
 ```
+
+# Useful Files
+
+You may find some files useful for your research, including:
+  1. Clean item text (`*.text`);
+  2. Index mapping between raw IDs and remapped IDs (`*.user2index`, `*.item2index`);
+
+For downstream datasets, the corresponding files are naturally in the `downstream-datasets.zip`. Once you unzip it, then you may find them.
+
+For pre-trained datasets, the corresponding files are stored in `raw-datasets-for-pretrain.zip`.
