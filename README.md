@@ -7,10 +7,10 @@ This is the official PyTorch implementation for the [paper](https://arxiv.org/ab
 
 *Updates*:
 
-* [June 28, 2022] We updated some useful "mid product" files that can be obtained during the data preprocessing stage [[link]](dataset/#useful-files), including:
+* [June 28, 2022] We updated some useful "mid product" files that can be obtained during the data preprocessing stage [[link]](dataset#useful-files), including:
   1. Clean item text (`*.text`);
   2. Index mapping between raw IDs and remapped IDs (`*.user2index`, `*.item2index`);
-* [June 16, 2022] We released the code and scripts for  preprocessing ours datasets [[link]](dataset/#dataset-preprocessing).
+* [June 16, 2022] We released the code and scripts for  preprocessing ours datasets [[link]](dataset#dataset-preprocessing).
 
 ## Overview
 
@@ -79,7 +79,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python ddp_pretrain.py
 
 ### Customized Datasets
 
-Please refer to [[link]](dataset/) for details of data preprocessing. Then you can correspondingly try your customized datasets.
+Please refer to [[link]](dataset#dataset-preprocessing) for details of data preprocessing. Then you can correspondingly try your customized datasets.
 
 ### Acknowledgement
 
