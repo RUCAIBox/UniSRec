@@ -48,7 +48,7 @@ python finetune.py -d Scientific -p saved/UniSRec-FHCKM-300.pth
 Fine-tune the pre-trained model in inductive setting.
 
 ```
-python finetune.py -d Scientific -p saved/UniSRec-FHCKM-300.pth --train_stage inductive_ft
+python finetune.py -d Scientific -p saved/UniSRec-FHCKM-300.pth --train_stage=inductive_ft
 ```
 
 Train UniSRec from scratch (w/o pre-training).
@@ -60,7 +60,7 @@ python finetune.py -d Scientific
 Run baseline SASRec.
 
 ```
-python run_baseline.py -m SASRec -d Scientific --config_files props/finetune.yaml --hidden_size=300
+python run_baseline.py -m SASRec -d Scientific --config_files=props/finetune.yaml --hidden_size=300
 ```
 
 ### Pre-train from scratch
