@@ -19,11 +19,17 @@ If you have downloaded the processed datasets, you can directly use them for rep
 
 If you want to know the details of data preprocessing, please see the instructions below.
 
+> **[Important!!!]** Note that due to the issue of randomness, the processed datasets may not be exactly the same as those released by us. As some items are reviewed at the same timestamp, then these items can have a random order in the item sequences after sorting chronologically.
+
 ## Amazon 2018
 
 ### 1. Download raw datasets
 
-Please download the raw datasets from the original website [[link]](https://nijianmo.github.io/amazon/index.html).
+Please download the raw datasets from the original website.
+
+For the meta data, please click the ***metadata*** link of each category in the table from [http://deepyeti.ucsd.edu/jianmo/amazon/index.html](http://deepyeti.ucsd.edu/jianmo/amazon/index.html).
+
+For the rating data, please click the ***ratings only*** link of each category in the table "Small subsets for experimentation" from [https://nijianmo.github.io/amazon/index.html#subsets](https://nijianmo.github.io/amazon/index.html#subsets).
 
 Here we take `Pantry` for example.
 
