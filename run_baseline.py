@@ -34,6 +34,11 @@ def run_baseline(model, dataset, config_file_list=[]):
     if model_name == 'FDSA':
         from baselines.fdsa import FDSA
         model = FDSA(config, train_data.dataset).to(config['device'])
+    elif model_name == 'S3Rec':
+        from baselines.s3rec import S3Rec
+        model = S3Rec(config, train_data.dataset).to(config['device'])
+    else:
+        raise NotImplementedError(f'The baseline [{model_name}] has not implemented yet.')
     logger.info(model)
 
     # trainer loading and initialization
