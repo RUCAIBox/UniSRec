@@ -7,6 +7,7 @@ This is the official PyTorch implementation for the [paper](https://arxiv.org/ab
 
 *Updates*:
 
+* [Nov. 22, 2022] We added scripts and implementations of baselines FDSA and S^3-Rec [[link]](https://github.com/RUCAIBox/UniSRec/issues/4#issuecomment-1316045022).
 * [June 28, 2022] We updated some useful "mid product" files that can be obtained during the data preprocessing stage [[link]](dataset#useful-files), including:
   1. Clean item text (`*.text`);
   2. Index mapping between raw IDs and remapped IDs (`*.user2index`, `*.item2index`);
@@ -62,6 +63,8 @@ Run baseline SASRec.
 ```
 python run_baseline.py -m SASRec -d Scientific --config_files=props/finetune.yaml --hidden_size=300
 ```
+
+Please refer to [[link]](https://github.com/RUCAIBox/UniSRec/issues/4#issuecomment-1316045022) for more scripts of our baselines.
 
 ### Pre-train from scratch
 
