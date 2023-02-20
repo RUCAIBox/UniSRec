@@ -106,7 +106,7 @@ class UniSRec(SASRec):
         pos_items_emb = self.moe_adaptor(interaction['pos_item_emb'])
         pos_items_emb = F.normalize(pos_items_emb, dim=1)
 
-        pos_logits = (seq_output * pos_items_emb).sum(dim=1, keepdim=True) / self.temperature
+        pos_logits = (seq_output * pos_items_emb).sum(dim=1) / self.temperature
         pos_logits = torch.exp(pos_logits)
 
         neg_logits = torch.matmul(seq_output, pos_items_emb.transpose(0, 1)) / self.temperature
@@ -123,7 +123,7 @@ class UniSRec(SASRec):
         seq_output_aug = self.forward(item_seq_aug, item_emb_list_aug, item_seq_len_aug)
         seq_output_aug = F.normalize(seq_output_aug, dim=1)
 
-        pos_logits = (seq_output * seq_output_aug).sum(dim=1, keepdim=True) / self.temperature
+        pos_logits = (seq_output * seq_output_aug).sum(dim=1) / self.temperature
         pos_logits = torch.exp(pos_logits)
 
         neg_logits = torch.matmul(seq_output, seq_output_aug.transpose(0, 1)) / self.temperature
