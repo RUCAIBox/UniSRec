@@ -27,7 +27,7 @@ If you want to know the details of data preprocessing, please see the instructio
 
 Please download the raw datasets from the original website.
 
-For the meta data, please click the ***metadata*** link of each category in the table from [http://deepyeti.ucsd.edu/jianmo/amazon/index.html](http://deepyeti.ucsd.edu/jianmo/amazon/index.html).
+For the meta data, please click the ***metadata*** link of each category in the table "Complete review data" from [https://nijianmo.github.io/amazon/index.html](https://nijianmo.github.io/amazon/index.html).
 
 For the rating data, please click the ***ratings only*** link of each category in the table "Small subsets for experimentation" from [https://nijianmo.github.io/amazon/index.html#subsets](https://nijianmo.github.io/amazon/index.html#subsets).
 
