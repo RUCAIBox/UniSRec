@@ -64,8 +64,8 @@ python to_pretrain_atomic_files.py
 path=`pwd`
 for ds in Food Home CDs Kindle Movies
 do
-  ln -s ${path}/../downstream/${ds}/${ds}.feat1CLS ../pretrain/FHCKM/
-  ln -s ${path}/../downstream/${ds}/${ds}.feat2CLS ../pretrain/FHCKM/
+  ln -s ${path}/../pretrain/${ds}/${ds}.feat1CLS ../pretrain/FHCKM/
+  ln -s ${path}/../pretrain/${ds}/${ds}.feat2CLS ../pretrain/FHCKM/
 done
 ```
 
