@@ -22,10 +22,10 @@ We propose **UniSRec**, which stands for **Uni**versal **S**equence representati
 ## Requirements
 
 ```
-recbole==1.0.1
-python==3.9.7
-cudatoolkit==11.3.1
-pytorch==1.11.0
+recbole>=1.1.1
+python>=3.9.7
+cudatoolkit>=11.3.1
+pytorch>=1.11.0
 ```
 
 ## Download Datasets and Pre-trained Model

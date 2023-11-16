@@ -3,7 +3,7 @@ benchmark_filename: [train, valid, test]
 alias_of_item_id: [item_id_list]
 load_col:
   inter: [user_id, item_id_list, item_id]
-neg_sampling: ~
+train_neg_sample_args: ~
 transform: ~
 
 topk: [10, 50]
