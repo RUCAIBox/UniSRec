@@ -4,7 +4,7 @@ alias_of_item_id: [item_id_list]
 load_col:
   inter: [user_id, item_id_list, item_id]
 train_neg_sample_args: ~
-transform: ~
+unisrec_transform: ~
 
 topk: [10, 50]
 metrics: [HIT, NDCG]

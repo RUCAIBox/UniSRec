@@ -3,8 +3,8 @@ benchmark_filename: [train]
 alias_of_item_id: [item_id_list]
 load_col:
   inter: [user_id, item_id_list, item_id]
-neg_sampling: ~
-transform: plm_emb
+train_neg_sample_args: ~
+unisrec_transform: plm_emb
 
 train_stage: pretrain
 pretrain_epochs: 300

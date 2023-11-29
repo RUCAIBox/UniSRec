@@ -5,7 +5,7 @@ from recbole.data.interaction import Interaction
 
 
 def construct_transform(config):
-    if config['transform'] is None:
+    if config['unisrec_transform'] is None:
         logger = getLogger()
         logger.warning('Equal transform')
         return Equal(config)
@@ -13,14 +13,14 @@ def construct_transform(config):
         str2transform = {
             'plm_emb': PLMEmb
         }
-        return str2transform[config['transform']](config)
+        return str2transform[config['unisrec_transform']](config)
 
 
 class Equal:
     def __init__(self, config):
         pass
 
-    def __call__(self, dataloader, interaction):
+    def __call__(self, dataset, interaction):
         return interaction
 
 
@@ -31,13 +31,13 @@ class PLMEmb:
         self.item_drop_ratio = config['item_drop_ratio']
         self.item_drop_coefficient = config['item_drop_coefficient']
 
-    def __call__(self, dataloader, interaction):
+    def __call__(self, dataset, interaction):
         '''Sequence augmentation and PLM embedding fetching
         '''
         item_seq_len = interaction['item_length']
         item_seq = interaction['item_id_list']
 
-        plm_embedding = dataloader.dataset.plm_embedding
+        plm_embedding = dataset.plm_embedding
         item_emb_seq = plm_embedding(item_seq)
         pos_item_id = interaction['item_id']
         pos_item_emb = plm_embedding(pos_item_id)
@@ -59,7 +59,7 @@ class PLMEmb:
             item_emb_seq_aug = plm_embedding(item_seq_aug)
         else:
             # Word drop
-            plm_embedding_aug = dataloader.dataset.plm_embedding_aug
+            plm_embedding_aug = dataset.plm_embedding_aug
             full_item_emb_seq_aug = plm_embedding_aug(item_seq)
 
             item_seq_aug = item_seq
